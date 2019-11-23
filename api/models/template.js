@@ -4,7 +4,7 @@ var fontStyleSchema = new mongoose.Schema({
     fontFamily: String,
     fontSize: Number,
     align: String,
-    fill: String,
+    fill: Number,
     wordWrap: Boolean,
     wordWrapWidth: Number
 })
@@ -19,7 +19,7 @@ var cardElementSchema = new mongoose.Schema({
         x: Number,
         y: Number
     },
-    background: String,
+    background: Number,
     fontStyle: fontStyleSchema
 })
 
@@ -31,8 +31,11 @@ cardElementSchema.add({
 })
 
 var templateSchema = new mongoose.Schema({
+    name: String,
+    game: String,
     width: String,
     height: String,
+    background: Number,
     layout: {
         type: Map,
         of: cardElementSchema
