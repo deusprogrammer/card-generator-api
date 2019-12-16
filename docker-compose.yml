@@ -1,13 +1,8 @@
 version: '2'
 services:
-  image-db:
-    image: mongo:latest
+  card-svc:
+    build: ./
     environment:
-      - MONGO_DATA_DIR=/data/db
-      - MONGO_LOG_DIR=/dev/null
-      - MONGO_INITDB_DATABASE=card-db
-    volumes:
-      - ~/data/db/card-db:/data/db
-    ports:
-      - 27017:27017
-    command: mongod --logpath=/dev/null # --quiet
+      - DB_URL=mongodb://mongo-db/image-db?retryWrites=true
+    ports: 
+      - 8081:3000

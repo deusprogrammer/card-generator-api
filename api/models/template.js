@@ -11,6 +11,7 @@ var fontStyleSchema = new mongoose.Schema({
 
 var cardElementSchema = new mongoose.Schema({
     type: String,
+    data: String,
     x: String,
     y: String,
     width: String,
