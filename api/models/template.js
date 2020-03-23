@@ -37,6 +37,10 @@ var templateSchema = new mongoose.Schema({
     width: String,
     height: String,
     background: Number,
+    fields: {
+        type: Array,
+        of: String
+    },
     layout: {
         type: Map,
         of: cardElementSchema
