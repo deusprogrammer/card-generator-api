@@ -1,6 +1,7 @@
 var express = require('express')
 var router = express.Router()
 var Templates = require('../models/template')
+var Cards = require('../models/card')
 
 router.route("/")
     .get((request, response) => {
@@ -35,11 +36,17 @@ router.route("/:id")
             response.json(results)
         })
     })
-    // .put((request, response) => {
 
-    // })
-    // .delete((request, response) => {
-        
-    // })
+router.route("/:id/cards")
+.get((request, response) => {
+    Cards.find({template: request.params.id}, null, {sort: {name: 1}}, (error, results) => {
+        if (error) {
+            response.send(error)
+            return
+        }
+
+        response.json(results)
+    })
+})
 
 module.exports = router
