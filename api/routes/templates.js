@@ -5,7 +5,7 @@ var Cards = require('../models/card')
 
 router.route("/")
     .get((request, response) => {
-        Templates.find({}, (error, results) => {
+        Templates.find({}, null, {sort: {game: 1, name: 1}}, (error, results) => {
             if (error) {
                 response.send(error)
                 return
