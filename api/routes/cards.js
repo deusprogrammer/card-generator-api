@@ -4,7 +4,7 @@ var Cards = require('../models/card')
 
 router.route("/")
     .get((request, response) => {
-        Cards.find({}, (error, results) => {
+        Cards.find({}, null, {sort: {template: 1, name: 1}}, (error, results) => {
             if (error) {
                 response.send(error)
                 return
